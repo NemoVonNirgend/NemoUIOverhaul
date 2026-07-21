@@ -7,8 +7,10 @@ import { backgroundUIEnhancements } from './features/backgrounds/background-ui-e
 import { backgroundOrganizer } from './features/backgrounds/background-organizer.js';
 import { ModelSelector } from './features/connection/model-selector.js';
 import { TextCompletionSelector } from './features/connection/textcomp-selector.js';
+import { initializeThemes } from './ui/theme-manager.js';
 
 async function initialize() {
+    await initializeThemes();
     document.body.classList.add(
         'nemo-ui-overhaul-enabled',
         'nemo-extensions-overhaul-enabled',
