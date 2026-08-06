@@ -1,0 +1,37 @@
+/* Encoding-safe overrides for decorative pseudo-element glyphs.
+ * Keep this file ASCII-only. CSS hexadecimal escapes avoid mojibake if an
+ * editor, generator, or bundler mishandles UTF-8 in the main stylesheet.
+ */
+
+:is(.nemo-preset-navigator-content-wrapper, .nemo-prompt-navigator-content-wrapper, .nemo-character-manager-content-wrapper) .grid-item.favorite::before {
+    content: '\2605 ';
+}
+
+body.nemo-animated-backgrounds-enabled .bg_grid_item::after,
+body.nemo-animated-backgrounds-enabled .background-item::after {
+    content: '\2713 ';
+}
+
+.nemo-engine-section summary::before {
+    content: '\25B6 ';
+}
+
+.nemo-tray-section > summary::after {
+    content: '\1F4C1 ';
+}
+
+.nemo-tray-section.nemo-tray-open > summary::after {
+    content: '\1F4C2 ';
+}
+
+details.nemo-engine-section.nemo-sub-section > summary::before {
+    content: '\2514\2500 ';
+}
+
+.nemo-var-resolved::before {
+    content: '\1F4CC  ';
+}
+
+.nemo-var-resolved.nemo-var-unset::before {
+    content: '\26A0\FE0F  ';
+}
