@@ -23,6 +23,15 @@ const DEFAULTS = Object.freeze({
     uiTheme: 'none',
 });
 
+function ensureEncodingFixStyles() {
+    if (document.getElementById('nemo-ui-encoding-fixes')) return;
+    const link = document.createElement('link');
+    link.id = 'nemo-ui-encoding-fixes';
+    link.rel = 'stylesheet';
+    link.href = new URL('./encoding-fixes.css', import.meta.url).href;
+    document.head.appendChild(link);
+}
+
 function getSettings() {
     if (!extension_settings.NemoUIOverhaul) {
         const legacy = extension_settings.NemoPresetExt ?? {};
@@ -105,6 +114,7 @@ function observeSettings(settings) {
 }
 
 async function initialize() {
+    ensureEncodingFixStyles();
     const settings = getSettings();
     observeSettings(settings);
     await initializeThemes();
