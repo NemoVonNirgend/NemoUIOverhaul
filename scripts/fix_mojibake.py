@@ -11,6 +11,7 @@ from ftfy import fix_text
 ROOT = Path(__file__).resolve().parents[1]
 TARGETS = [ROOT / "styles.css"]
 
+# Decorative pseudo-element glyphs are rewritten as ASCII CSS escapes.
 CSS_GLYPH_ESCAPES = {
     "★": r"\2605 ",
     "✓": r"\2713 ",
