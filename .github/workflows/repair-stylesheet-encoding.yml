@@ -1,0 +1,52 @@
+name: Repair stylesheet encoding
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/repair-stylesheet-encoding.yml'
+      - 'scripts/fix_mojibake.py'
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install repair dependency
+        run: python -m pip install --disable-pip-version-check ftfy==6.3.1
+
+      - name: Repair and validate stylesheet
+        run: |
+          python scripts/fix_mojibake.py
+          python - <<'PY'
+          from pathlib import Path
+          text = Path('styles.css').read_text(encoding='utf-8')
+          forbidden = ('Ã', 'Â', 'â€', 'â€“', 'â€”', 'ðŸ', 'Ãƒ')
+          found = [token for token in forbidden if token in text]
+          if found:
+              raise SystemExit(f'Mojibake markers remain: {found}')
+          print('Encoding validation passed.')
+          PY
+
+      - name: Commit repaired stylesheet
+        run: |
+          if git diff --quiet -- styles.css; then
+            echo 'Stylesheet already clean.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add styles.css
+          git commit -m 'Fix corrupted Unicode in UI stylesheet'
+          git push origin HEAD:main
