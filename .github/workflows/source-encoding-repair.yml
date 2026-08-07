@@ -1,0 +1,61 @@
+name: Repair runtime source encoding
+
+on:
+  push:
+    branches:
+      - repair/source-encoding-pass
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install repair dependencies
+        run: python -m pip install --disable-pip-version-check ftfy==6.3.1 tinycss2==1.4.0
+
+      - name: Repair runtime source text
+        run: |
+          python scripts/repair_source_encoding.py --write --report source-encoding-repair-report.json
+          python scripts/repair_source_encoding.py --check --report source-encoding-repair-report.json
+
+      - name: Validate runtime and CSS ownership
+        run: |
+          find . -type f -name '*.js' -not -path './node_modules/*' -print0 | xargs -0 -n1 node --check
+          node --test tests/*.test.js
+          python scripts/remove_prompt_ui_css.py --check
+          git diff --check
+
+      - name: Upload repair report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ui-source-encoding-repair
+          path: source-encoding-repair-report.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Commit repaired source
+        run: |
+          if git diff --quiet -- ':!source-encoding-repair-report.json'; then
+            echo 'Runtime source is already clean.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -u
+          git commit -m 'Repair runtime source encoding'
+          git push origin HEAD:repair/source-encoding-pass
