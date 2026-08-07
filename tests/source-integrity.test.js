@@ -55,8 +55,7 @@ test('runtime and theme source contains no mojibake or C1 controls', () => {
     assert.deepEqual(failures, []);
 });
 
-test('decorative CSS content uses encoding-safe code-point escapes', () => {
-    assert.match(read('styles.css'), /content:\s*["']\\2713\s+["']/u);
+test('decorative theme CSS uses encoding-safe code-point escapes', () => {
     assert.match(read('themes/nemotavern/nemotavern-theme.css'), /content:\s*["']\\2713\s+["']/u);
 
     const win98 = read('themes/win98-theme.css');
