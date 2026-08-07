@@ -224,7 +224,7 @@
 }
 
 :is(.nemo-preset-navigator-content-wrapper, .nemo-prompt-navigator-content-wrapper, .nemo-character-manager-content-wrapper) .grid-item.favorite::before {
-    content: 'Ã¢Ëœâ€¦';
+    content: '\2605 ';
     position: absolute;
     top: var(--nemo-space-sm);
     right: var(--nemo-space-sm);
@@ -841,7 +841,7 @@ body.nemo-animated-backgrounds-enabled .background-item.selected {
 /* Background hover overlay */
 body.nemo-animated-backgrounds-enabled .bg_grid_item::after,
 body.nemo-animated-backgrounds-enabled .background-item::after {
-    content: 'Ã¢Å“â€œ';
+    content: '\2713 ';
     position: absolute;
     top: 50%;
     left: 50%;
@@ -3366,7 +3366,7 @@ body.nemo-extensions-overhaul-enabled #extensions_settings {
 .nemo-engine-section summary { cursor: pointer; display: flex; align-items: center; list-style: none; position: relative; }
 .nemo-engine-section summary > li.completion_prompt_manager_prompt, li.completion_prompt_manager_prompt { display: flex; align-items: flex-start; width: 100%; justify-content: space-between; flex-wrap: wrap; padding: 4px 0; gap: 4px; }
 .nemo-engine-section summary::-webkit-details-marker, .nemo-engine-section summary::marker { display: none; }
-.nemo-engine-section summary::before { content: 'Ã¢â€“Â¶'; font-size: 0.75em; position: absolute; left: -15px; top: 50%; transform: translateY(-50%); color: var(--nemo-text-muted); pointer-events: none; transition: transform 0.2s ease; }
+.nemo-engine-section summary::before { content: '\25B6 '; font-size: 0.75em; position: absolute; left: -15px; top: 50%; transform: translateY(-50%); color: var(--nemo-text-muted); pointer-events: none; transition: transform 0.2s ease; }
 .nemo-engine-section[open] > summary::before { transform: translateY(-50%) rotate(90deg); }
 .nemo-engine-section summary > li.completion_prompt_manager_prompt > span.completion_prompt_manager_prompt_name { margin-left: 18px; }
 .nemo-engine-section .nemo-section-content { padding-left: 15px; border-left: 1px solid var(--nemo-border-color); margin-left: 5px; display: flex; flex-direction: column; gap: 2px; }
@@ -3427,14 +3427,14 @@ span.completion_prompt_manager_prompt_name a.prompt-manager-inspect-action { whi
 
 /* Sub-section headers in tray mode get a folder indicator */
 .nemo-tray-section > summary::after {
-    content: 'Ã°Å¸â€œÂ';
+    content: '\1F4C1 ';
     margin-left: 8px;
     font-size: 12px;
     opacity: 0.7;
 }
 
 .nemo-tray-section.nemo-tray-open > summary::after {
-    content: 'Ã°Å¸â€œâ€š';
+    content: '\1F4C2 ';
 }
 
 /* Category Tray Panel */
@@ -4459,7 +4459,7 @@ details.nemo-engine-section.nemo-sub-section > summary {
 }
 
 details.nemo-engine-section.nemo-sub-section > summary::before {
-    content: 'Ã¢â€â€Ã¢â€â‚¬';
+    content: '\2514 \2500 ';
     margin-right: 6px;
     color: rgba(74, 158, 255, 0.5);
     font-family: monospace;
@@ -5237,7 +5237,7 @@ body.nemo-dropdown-theme-st .nemo-engine-section li.completion_prompt_manager_pr
 }
 
 .nemo-var-resolved::before {
-    content: 'Ã°Å¸â€œÅ’ ';
+    content: '\1F4CC  ';
     font-size: 10px;
 }
 
@@ -5249,7 +5249,7 @@ body.nemo-dropdown-theme-st .nemo-engine-section li.completion_prompt_manager_pr
 }
 
 .nemo-var-resolved.nemo-var-unset::before {
-    content: 'Ã¢Å¡Â Ã¯Â¸Â ';
+    content: '\26A0 \FE0F  ';
 }
 
 /* Unresolved macro highlighting */
@@ -6420,7 +6420,7 @@ body.nemo-dropdown-theme-st .nemo-engine-section li.completion_prompt_manager_pr
     background-color: rgba(0, 0, 0, 0.4);
     border: none;
     border-radius: 50%;
-    /* WCAG 2.1 AAA minimum touch target: 44px Ãƒâ€” 44px */
+    /* WCAG 2.1 AAA minimum touch target: 44px × 44px */
     width: 44px;
     height: 44px;
     padding: 0;
@@ -9714,7 +9714,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     margin-bottom: 10px;
 }
 
-/* Hide the entire H4 heading Ã¢â‚¬â€ we'll merge its buttons into the dropdown row via JS */
+/* Hide the entire H4 heading — we'll merge its buttons into the dropdown row via JS */
 #nemo-tab-ui-theme #UI-presets-block > h4 {
     display: none !important;
 }
@@ -9820,7 +9820,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     width: 100%;
 }
 
-/* Custom CSS block Ã¢â‚¬â€ inline drawer style at bottom */
+/* Custom CSS block — inline drawer style at bottom */
 #nemo-tab-ui-theme #CustomCSS-block {
     border: 1px solid var(--SmartThemeBorderColor, rgba(255, 255, 255, 0.1));
     border-radius: 6px;
@@ -9929,7 +9929,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     width: 100%;
 }
 
-/* Hide redundant "Chat/Message Handling" H4 Ã¢â‚¬â€ the tab already labels this */
+/* Hide redundant "Chat/Message Handling" H4 — the tab already labels this */
 #nemo-tab-chat-messages #power-user-option-checkboxes > div:first-child > h4:first-child {
     display: none !important;
 }
@@ -9968,7 +9968,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     background-color: var(--SmartThemeQuoteColor, rgba(255, 255, 255, 0.08));
 }
 
-/* STscript Settings section Ã¢â‚¬â€ divider */
+/* STscript Settings section — divider */
 #nemo-tab-chat-messages #power-user-option-checkboxes > div:has(> h4[data-i18n="STscript Settings"]),
 #nemo-tab-chat-messages #power-user-option-checkboxes > div:last-child {
     border-top: 1px solid var(--SmartThemeBorderColor, rgba(255, 255, 255, 0.1));
@@ -9976,7 +9976,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     margin-top: 5px;
 }
 
-/* Inline drawers in Chat Messages Ã¢â‚¬â€ consistent styling */
+/* Inline drawers in Chat Messages — consistent styling */
 #nemo-tab-chat-messages .inline-drawer {
     border: 1px solid var(--SmartThemeBorderColor, rgba(255, 255, 255, 0.1));
     border-radius: 6px;
@@ -10011,7 +10011,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     }
 }
 
-/* Character Handling Ã¢â‚¬â€ single column, full width */
+/* Character Handling — single column, full width */
 #nemo-tab-character-handling.active {
     display: flex;
     flex-direction: column;
@@ -10019,7 +10019,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     width: 100%;
 }
 
-/* Hide redundant "Character Handling" H4 Ã¢â‚¬â€ the tab already says it */
+/* Hide redundant "Character Handling" H4 — the tab already says it */
 #nemo-tab-character-handling [name="CharacterHandlingToggles"] > h4 {
     display: none !important;
 }
@@ -10057,7 +10057,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     flex-shrink: 0;
 }
 
-/* Checkboxes in Character Handling section Ã¢â‚¬â€ grid layout */
+/* Checkboxes in Character Handling section — grid layout */
 #nemo-tab-character-handling [name="CharacterHandlingToggles"] {
     display: flex;
     flex-direction: column;
@@ -10098,7 +10098,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     border-bottom: none;
 }
 
-/* Miscellaneous checkboxes Ã¢â‚¬â€ same card style */
+/* Miscellaneous checkboxes — same card style */
 #nemo-tab-character-handling [name="MiscellaneousToggles"] .checkbox_label {
     display: flex;
     align-items: center;
@@ -10706,7 +10706,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     
 }
 
-/* Chat Messages Ã¢â‚¬â€ additional layout rules */
+/* Chat Messages — additional layout rules */
 #nemo-tab-chat-messages .flex-container {
     display: flex;
     align-items: center;
@@ -10754,7 +10754,7 @@ body.nemo-message-theme-active .mes_block :is(.mes_text, .mes_reasoning) font[co
     margin-bottom: 8px;
 }
 
-/* Reasoning/Misc tab Ã¢â‚¬â€ full width layout */
+/* Reasoning/Misc tab — full width layout */
 #nemo-tab-reasoning-misc {
     display: none;
 }
@@ -11816,7 +11816,7 @@ body.theme-terminal .mes_block .avatar {
     gap: 15px;
 }
 
-/* Tab navigation Ã¢â‚¬â€ full-width underline style matching User Settings */
+/* Tab navigation — full-width underline style matching User Settings */
 .nemo-advanced-formatting-tabs {
     display: flex;
     border-bottom: 2px solid var(--SmartThemeBorderColor, #444);
@@ -12384,7 +12384,7 @@ body.theme-terminal .mes_block .avatar {
 }
 
 .nemo-trigger-list li::before {
-    content: "Ã¢â‚¬Â¢";
+    content: "\2022 ";
     margin-right: 6px;
     opacity: 0.5;
 }
@@ -13485,7 +13485,7 @@ body.theme-terminal .mes_block .avatar {
     margin: 10px 0;
     border-color: var(--SmartThemeBorderColor);
 }
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Activity Feed Trigger Button Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Activity Feed Trigger Button ── */
 
 .nlg-feed-trigger {
     position: fixed;
@@ -13540,7 +13540,7 @@ body.theme-terminal .mes_block .avatar {
     line-height: 1;
 }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Activity Feed Panel Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Activity Feed Panel ── */
 
 .nlg-feed-panel {
     position: fixed;
@@ -13650,7 +13650,7 @@ body.theme-terminal .mes_block .avatar {
     display: none;
 }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Feed Items Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Feed Items ── */
 
 .nlg-feed-item {
     display: flex;
@@ -13676,7 +13676,7 @@ body.theme-terminal .mes_block .avatar {
     opacity: 0.8;
 }
 
-/* Running state Ã¢â‚¬â€ pulsing left border */
+/* Running state — pulsing left border */
 .nlg-feed-item[data-status="running"]::before {
     animation: nlg-pulse-border 1.5s ease-in-out infinite;
 }
@@ -13758,7 +13758,7 @@ body.theme-terminal .mes_block .avatar {
     margin-top: 2px;
 }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Animations Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Animations ── */
 
 /* Enter: fade in + slide down from above */
 .nlg-feed-enter {
@@ -13788,7 +13788,7 @@ body.theme-terminal .mes_block .avatar {
     animation: nlg-drop-fade 0.5s ease-in forwards;
 }
 
-/* Faded state Ã¢â‚¬â€ still visible but dimmed */
+/* Faded state — still visible but dimmed */
 .nlg-feed-faded {
     opacity: 0.3;
     transform: translateY(0);
@@ -13831,7 +13831,7 @@ body.theme-terminal .mes_block .avatar {
     font-size: 11px;
 }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ TunnelVision Integration Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── TunnelVision Integration ── */
 
 .nlg-tv-badge {
     display: inline-block;
@@ -13859,7 +13859,7 @@ body.theme-terminal .mes_block .avatar {
     border-left-color: #ef4444 !important;
 }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ NLG Tab inside TV Panel Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── NLG Tab inside TV Panel ── */
 
 .nlg-tv-tab-body {
     overflow-y: auto;
@@ -13950,7 +13950,7 @@ body.theme-terminal .mes_block .avatar {
     border-color: rgba(255, 255, 255, 0.12);
 }
 
-/* Ã¢â€â‚¬Ã¢â€â‚¬ Details Popup Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* ── Details Popup ── */
 
 .nlg-feed-details {
     position: fixed;
