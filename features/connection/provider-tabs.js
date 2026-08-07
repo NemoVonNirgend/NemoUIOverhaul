@@ -55,7 +55,7 @@ function buildTabs() {
         select2El.classList.add('nemo-hidden-by-selector');
     }
 
-    // Create the outer wrapper â€” this is our "safe zone"
+    // Create the outer wrapper — this is our "safe zone"
     // It's explicitly styled inline so no external CSS can hide it
     wrapperContainer = document.createElement('div');
     wrapperContainer.id = 'nemo-model-selector-wrapper';
@@ -106,7 +106,7 @@ function buildTabs() {
 }
 
 /**
- * Handle tab click â€” update dropdown and trigger change.
+ * Handle tab click — update dropdown and trigger change.
  * @param {string} sourceValue
  */
 function onTabClick(sourceValue) {

@@ -61,11 +61,11 @@ const SOURCE_TO_SECRET_KEY = {
  */
 
 /**
- * Connection Pool â€” registry and persistence layer for provider+model combinations.
+ * Connection Pool — registry and persistence layer for provider+model combinations.
  * All mutations auto-persist to extension_settings via save().
  */
 export const ConnectionPool = {
-    // â”€â”€â”€ Registry â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Registry ───────────────────────────────────────────────────────
 
     /**
      * Add or update a connection in the pool.
@@ -180,7 +180,7 @@ export const ConnectionPool = {
         });
     },
 
-    // â”€â”€â”€ Availability â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Availability ───────────────────────────────────────────────────
 
     /**
      * Check if an API key exists for this connection's source.
@@ -193,7 +193,7 @@ export const ConnectionPool = {
 
         const secretKey = SOURCE_TO_SECRET_KEY[connection.source];
         if (!secretKey) {
-            // Unknown source â€” assume available (could be a local/proxy backend)
+            // Unknown source — assume available (could be a local/proxy backend)
             log.debug(`No secret key mapping for source: ${connection.source}, assuming available`);
             return true;
         }
@@ -216,7 +216,7 @@ export const ConnectionPool = {
         return checks.filter(Boolean);
     },
 
-    // â”€â”€â”€ Persistence â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Persistence ────────────────────────────────────────────────────
 
     /**
      * Save the current pool to extension_settings and persist.
@@ -239,7 +239,7 @@ export const ConnectionPool = {
         log.info(`Loaded ${this._getPool().length} connection(s) from settings`);
     },
 
-    // â”€â”€â”€ Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Utilities ──────────────────────────────────────────────────────
 
     /**
      * Generate a clean kebab-case id from source and model strings.
@@ -258,7 +258,7 @@ export const ConnectionPool = {
             .replace(/^-|-$/g, '');  // trim leading/trailing dashes
     },
 
-    // â”€â”€â”€ Internal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Internal ───────────────────────────────────────────────────────
 
     /**
      * Ensure the extension settings namespace and connectionPool array exist.

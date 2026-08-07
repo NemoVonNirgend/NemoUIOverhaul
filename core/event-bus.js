@@ -285,7 +285,7 @@ if (typeof window !== 'undefined') {
 export default eventBus;
 
 // Log initialization
-console.log('[EventBus] Ã¢Å“â€¦ Shared event bus initialized and ready');
+console.log('[EventBus] ✅ Shared event bus initialized and ready');
 
 // Set up error event listener for debugging
 eventBus.on('eventbus:error', (error) => {

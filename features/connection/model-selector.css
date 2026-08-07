@@ -513,7 +513,7 @@
         align-items: center;
     }
 
-    /* Search bar â€” taller for thumb input */
+    /* Search bar — taller for thumb input */
     .nemo-model-search {
         padding: 12px 12px 12px 36px;
         font-size: 1em;
@@ -525,7 +525,7 @@
         font-size: 0.9em;
     }
 
-    /* Cards â€” single column, larger touch targets */
+    /* Cards — single column, larger touch targets */
     .nemo-model-grid {
         grid-template-columns: 1fr;
         max-height: 300px;
@@ -571,7 +571,7 @@
         padding: 4px 6px;
     }
 
-    /* Info panel â€” more readable on small screens */
+    /* Info panel — more readable on small screens */
     .nemo-card-info-panel {
         font-size: 0.85em;
         gap: 6px;

@@ -74,7 +74,7 @@ let enhancementInitTimer = null;
 /**
  * Detect mobile viewport. Themes break layouts on small screens and users
  * have reported getting stuck in them, so we refuse to apply non-default
- * themes when this returns true. Saved settings are preserved Ã¢â‚¬â€ the theme
+ * themes when this returns true. Saved settings are preserved — the theme
  * just isn't applied until the viewport is large enough.
  * @returns {boolean}
  */
@@ -222,7 +222,7 @@ export async function applyTheme(themeName) {
     // Mobile guard: refuse to apply any non-default theme on small viewports.
     // The saved setting is left alone so the theme returns on desktop.
     if (themeName !== 'none' && theme.cssFile && isMobileViewport()) {
-        console.log(`${LOG_PREFIX} Mobile viewport detected Ã¢â‚¬â€ blocking theme: ${themeName}`);
+        console.log(`${LOG_PREFIX} Mobile viewport detected — blocking theme: ${themeName}`);
         stripAppliedTheme();
         showMobileThemeBlockedNotice();
         return;

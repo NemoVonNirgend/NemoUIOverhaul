@@ -27,7 +27,7 @@ function escapeRegex(value) {
 }
 
 test('manifest and documentation define the post-prompt ownership release', () => {
-    assert.equal(manifest.version, '1.2.0');
+    assert.equal(manifest.version, '1.2.1');
     assert.ok(readme.includes('does **not** style or initialize prompt-workstation surfaces'));
     assert.ok(readme.includes('NemoPresetExt 6.0 owns'));
 });

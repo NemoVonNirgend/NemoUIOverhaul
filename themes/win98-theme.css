@@ -1172,25 +1172,25 @@ body.nemo-theme-win98 .nemo-toast {
 
 body.nemo-theme-win98 .toast.error::before,
 body.nemo-theme-win98 .nemo-toast.error::before {
-    content: '❌';
+    content: '\274C ';
     margin-right: 8px;
 }
 
 body.nemo-theme-win98 .toast.warning::before,
 body.nemo-theme-win98 .nemo-toast.warning::before {
-    content: '⚠️';
+    content: '\26A0 \FE0F ';
     margin-right: 8px;
 }
 
 body.nemo-theme-win98 .toast.info::before,
 body.nemo-theme-win98 .nemo-toast.info::before {
-    content: 'ℹ️';
+    content: '\2139 \FE0F ';
     margin-right: 8px;
 }
 
 body.nemo-theme-win98 .toast.success::before,
 body.nemo-theme-win98 .nemo-toast.success::before {
-    content: '✅';
+    content: '\2705 ';
     margin-right: 8px;
 }
 

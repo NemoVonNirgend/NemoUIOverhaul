@@ -325,7 +325,7 @@ function deleteProxy(id) {
  * @param {object} proxy
  */
 function applyProxyFields(proxy) {
-    // Find the custom endpoint URL input â€” try multiple possible IDs
+    // Find the custom endpoint URL input — try multiple possible IDs
     const urlSelectors = ['#custom_api_url_text', '#openai_reverse_proxy', 'input[placeholder*="localhost"]'];
     for (const sel of urlSelectors) {
         const urlInput = document.querySelector(sel);
@@ -450,7 +450,7 @@ export const ProxyManager = {
     },
 
     /**
-     * Activate a proxy by ID â€” marks it active, updates ST fields.
+     * Activate a proxy by ID — marks it active, updates ST fields.
      * @param {string} proxyId
      */
     activate(proxyId) {

@@ -369,7 +369,7 @@ body.nemo-theme-nemotavern input[type="checkbox"]:checked {
 }
 
 body.nemo-theme-nemotavern input[type="checkbox"]:checked::after {
-  content: '✓';
+  content: '\2713 ';
   color: white;
   display: block;
   font-size: 14px;

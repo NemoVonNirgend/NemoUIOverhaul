@@ -1,7 +1,7 @@
 {
   "display_name": "Nemo UI Overhaul",
   "author": "@NemoVonNirgend",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Optional settings, connection, extension, lorebook, background, responsive, model-selection, and theme UI enhancements.",
   "js": "index.js",
   "css": "styles.css",

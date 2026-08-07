@@ -60,7 +60,7 @@ export const ExtensionsTabOverhaul = {
         },
     ],
     
-    // IDs to skip Ã¢â‚¬â€ these aren't real extensions (stray style tags, etc.)
+    // IDs to skip — these aren't real extensions (stray style tags, etc.)
     skipIds: ['nemo-ext-unknown-extension'],
 
     // Friendly display names for extension containers that lack proper title elements
@@ -267,7 +267,7 @@ export const ExtensionsTabOverhaul = {
 
             // Only treat an out-of-card panel as a hideable DUPLICATE when another copy is
             // actually incorporated into the overhaul. Otherwise the panel mounted late (after
-            // the layout was built) and this is the ONLY copy Ã¢â‚¬â€ hiding it makes the settings
+            // the layout was built) and this is the ONLY copy — hiding it makes the settings
             // "flicker in then disappear". In that case, leave it visible so it stays reachable.
             const hasIncorporated = [...allSettings].some(isIncorporated);
 

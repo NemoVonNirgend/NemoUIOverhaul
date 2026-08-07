@@ -180,13 +180,13 @@ export const ModelPipeline = {
                     analysis: analysisText,
                     drafts: drafterResults,
                     timings: { ...timings, total_ms: Date.now() - totalStart },
-                    error: 'All drafters failed â€” no drafts to consolidate',
+                    error: 'All drafters failed — no drafts to consolidate',
                 };
             }
 
             // If only 1 draft succeeded, return it directly (no consolidation needed)
             if (successfulDrafts.length === 1) {
-                status('consolidation', 'Only 1 draft available â€” skipping consolidation');
+                status('consolidation', 'Only 1 draft available — skipping consolidation');
                 timings.consolidation_ms = 0;
                 return {
                     text: successfulDrafts[0].text,
