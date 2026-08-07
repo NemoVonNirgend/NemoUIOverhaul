@@ -1,0 +1,63 @@
+name: Remove prompt UI ownership
+
+on:
+  push:
+    branches:
+      - remove-prompt-ui-ownership
+  pull_request:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: nemo-ui-prompt-ownership-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Install CSS parser
+        run: python -m pip install --disable-pip-version-check tinycss2==1.4.0
+
+      - name: Remove prompt-owned selectors
+        run: |
+          python scripts/remove_prompt_ui_css.py --write
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('styles.css')
+          text = path.read_text(encoding='utf-8')
+          path.write_text('\n'.join(line.rstrip() for line in text.splitlines()) + '\n', encoding='utf-8')
+          PY
+          python scripts/remove_prompt_ui_css.py --check
+
+      - name: Validate extension runtime and contracts
+        run: |
+          node --check index.js
+          npm test
+          git diff --check
+
+      - name: Commit transformed stylesheet
+        if: github.event_name == 'push'
+        run: |
+          if git diff --quiet -- styles.css; then
+            echo 'Prompt ownership is already clean.'
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add styles.css
+          git commit -m 'Remove prompt UI ownership from NemoUIOverhaul'
+          git push origin HEAD:remove-prompt-ui-ownership
