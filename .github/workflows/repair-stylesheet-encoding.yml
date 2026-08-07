@@ -2,12 +2,9 @@ name: Repair stylesheet encoding
 
 on:
   workflow_dispatch:
-  issues:
-    types: [opened]
 
 permissions:
   contents: write
-  issues: write
 
 concurrency:
   group: nemo-ui-stylesheet-repair
@@ -15,9 +12,6 @@ concurrency:
 
 jobs:
   repair:
-    if: >-
-      github.event_name == 'workflow_dispatch' ||
-      github.event.issue.title == '[maintenance] Repair NemoUI stylesheet encoding'
     runs-on: ubuntu-latest
 
     steps:
@@ -43,10 +37,8 @@ jobs:
           git diff --check
 
       - name: Commit repaired source
-        id: commit
         run: |
           if git diff --quiet; then
-            echo 'changed=false' >> "$GITHUB_OUTPUT"
             echo 'Repository is already clean.'
             exit 0
           fi
@@ -55,19 +47,3 @@ jobs:
           git add -A
           git commit -m 'Repair corrupted Unicode in UI stylesheet'
           git push origin HEAD:main
-          echo 'changed=true' >> "$GITHUB_OUTPUT"
-
-      - name: Report completion on maintenance issue
-        if: github.event_name == 'issues'
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          CHANGED: ${{ steps.commit.outputs.changed }}
-        run: |
-          if [ "$CHANGED" = 'true' ]; then
-            message='Completed the full stylesheet repair, removed the temporary override, and pushed the clean source to main.'
-          else
-            message='The repair completed successfully; the repository was already clean.'
-          fi
-          gh issue comment "$ISSUE_NUMBER" --body "$message"
-          gh issue close "$ISSUE_NUMBER" --reason completed
