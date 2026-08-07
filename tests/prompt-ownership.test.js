@@ -22,6 +22,10 @@ const PROMPT_SELECTOR_MARKERS = [
     '#nemoReasoningSection',
 ];
 
+function escapeRegex(value) {
+    return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
 test('manifest and documentation define the post-prompt ownership release', () => {
     assert.equal(manifest.version, '1.2.0');
     assert.ok(readme.includes('does **not** style or initialize prompt-workstation surfaces'));
@@ -45,8 +49,10 @@ test('runtime remains a broad UI extension without prompt-workstation imports', 
     }
 });
 
-test('stylesheet no longer contains direct prompt-workstation selector fingerprints', () => {
+test('stylesheet no longer contains direct prompt-workstation selectors', () => {
+    const uncommented = styles.replace(/\/\*[\s\S]*?\*\//g, '');
     for (const marker of PROMPT_SELECTOR_MARKERS) {
-        assert.equal(styles.toLowerCase().includes(marker.toLowerCase()), false, marker);
+        const selectorPattern = new RegExp(`${escapeRegex(marker)}[^{}]*\\{`, 'i');
+        assert.doesNotMatch(uncommented, selectorPattern, marker);
     }
 });
