@@ -128,7 +128,7 @@ Return as JSON array of patterns with frequency counts.`,
             variables: ['text']
         });
 
-        console.log('[Shared Prompts] Ã¢Å“â€¦ Initialized with', this.prompts.size, 'default prompts');
+        console.log('[Shared Prompts] ✅ Initialized with', this.prompts.size, 'default prompts');
     }
 
     /**
@@ -372,4 +372,4 @@ if (typeof window !== 'undefined') {
 // Export for module use
 export default sharedPromptsManager;
 
-console.log('[Shared Prompts] Ã¢Å“â€¦ Module loaded - Ready for integration');
+console.log('[Shared Prompts] ✅ Module loaded - Ready for integration');

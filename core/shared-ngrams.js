@@ -29,7 +29,7 @@ class SharedNgramAnalyzer {
         console.log('[Shared N-grams] Initializing enhanced n-gram analyzer...');
 
         this.isInitialized = true;
-        console.log('[Shared N-grams] Ã¢Å“â€¦ Initialized successfully');
+        console.log('[Shared N-grams] ✅ Initialized successfully');
     }
 
     /**
@@ -435,4 +435,4 @@ if (typeof window !== 'undefined') {
 // Export for module use
 export default sharedNgramAnalyzer;
 
-console.log('[Shared N-grams] Ã¢Å“â€¦ Module loaded - Ready for enhanced analysis');
+console.log('[Shared N-grams] ✅ Module loaded - Ready for enhanced analysis');

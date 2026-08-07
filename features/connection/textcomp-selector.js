@@ -15,7 +15,7 @@ const NEMO_EXTENSION_NAME = 'NemoUIOverhaul';
 /**
  * Map of Text Completion provider keys to their model select IDs.
  * Providers with no model select (KoboldCpp, HuggingFace) are omitted.
- * Text inputs (generic, ooba) are included â€” we read their datalist/value.
+ * Text inputs (generic, ooba) are included — we read their datalist/value.
  */
 const TC_SOURCE_TO_SELECT = {
     'aphrodite': '#aphrodite_model',

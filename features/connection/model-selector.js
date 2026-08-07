@@ -87,7 +87,7 @@ function restoreModelSelect(selectId) {
 
 /**
  * Hide ALL model selects across ALL providers.
- * Called once at initialization â€” our card grid replaces them all.
+ * Called once at initialization — our card grid replaces them all.
  */
 function hideAllModelSelects() {
     const allSelects = ModelCards.getAllSelects();
@@ -132,7 +132,7 @@ function handleCrossProviderSelect(targetSource, modelValue) {
 }
 
 /**
- * Handle provider change â€” update tabs and cards.
+ * Handle provider change — update tabs and cards.
  * @param {string} [newSource] - New provider source (from event arg)
  */
 function onProviderChanged(newSource) {
@@ -167,7 +167,7 @@ function setupRepopulationObserver() {
     }
 
     repopulationObserver = new MutationObserver(() => {
-        // Model list repopulated â€” refresh cards after debounce
+        // Model list repopulated — refresh cards after debounce
         clearTimeout(refreshTimer);
         refreshTimer = setTimeout(() => {
             // Re-hide selects (repopulation may have disrupted our state)
@@ -304,7 +304,7 @@ export const ModelSelector = {
         ModelCards.destroy();
         ProviderTabs.destroy();
 
-        // Remove CSS â€” keep it loaded for the re-enable button styling
+        // Remove CSS — keep it loaded for the re-enable button styling
         // (it's lightweight and harmless)
 
         // Inject re-enable button next to the restored dropdown
@@ -360,7 +360,7 @@ export const ModelSelector = {
         });
 
         // Insert right after the select dropdown, inline.
-        // IMPORTANT: do NOT mutate sourceSelect.parentNode â€” that's #openai_api, which
+        // IMPORTANT: do NOT mutate sourceSelect.parentNode — that's #openai_api, which
         // contains the entire connection panel (label, proxy drawer, API key form,
         // Connect button, etc.). Setting display:flex on it would collapse the whole
         // panel into a single horizontal row and break the layout.

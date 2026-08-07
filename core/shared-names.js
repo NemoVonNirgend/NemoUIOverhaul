@@ -40,7 +40,7 @@ class SharedNamesManager {
         // Load ProsePolisher's comprehensive name database (1000+ names)
         if (defaultNames && defaultNames.size > 0) {
             this.defaultNames = new Set(defaultNames);
-            console.log(`[Shared Names] Ã¢Å“â€¦ Loaded ${this.defaultNames.size} default names from ProsePolisher`);
+            console.log(`[Shared Names] ✅ Loaded ${this.defaultNames.size} default names from ProsePolisher`);
         } else {
             console.warn('[Shared Names] ProsePolisher defaultNames not available, using fallback');
             this.loadFallbackNames();
@@ -50,7 +50,7 @@ class SharedNamesManager {
         await this.extractNamesFromChat();
 
         this.isInitialized = true;
-        console.log('[Shared Names] Ã¢Å“â€¦ Initialization complete');
+        console.log('[Shared Names] ✅ Initialization complete');
     }
 
     /**
@@ -97,7 +97,7 @@ class SharedNamesManager {
                 }
             }
 
-            console.log(`[Shared Names] Ã¢Å“â€¦ Extracted ${this.extractedNames.size} names from chat`);
+            console.log(`[Shared Names] ✅ Extracted ${this.extractedNames.size} names from chat`);
         } catch (error) {
             console.warn('[Shared Names] Failed to extract names from chat:', error);
         }
@@ -215,7 +215,7 @@ class SharedNamesManager {
     async refresh() {
         this.extractedNames.clear();
         await this.extractNamesFromChat();
-        console.log('[Shared Names] Ã¢Å“â€¦ Refreshed name database');
+        console.log('[Shared Names] ✅ Refreshed name database');
     }
 
     /**
@@ -269,4 +269,4 @@ if (typeof window !== 'undefined') {
 // Export for module use
 export default sharedNamesManager;
 
-console.log('[Shared Names] Ã¢Å“â€¦ Module loaded - Ready for integration');
+console.log('[Shared Names] ✅ Module loaded - Ready for integration');

@@ -177,7 +177,7 @@ export const UserSettingsTabs = {
 
                 // Merge import/export/delete buttons from the H4 into the dropdown row
                 const presetH4 = uiPresetBlock.querySelector('h4');
-                // The dropdown row has class "flexnowrap" Ã¢â‚¬â€ the H4's inner flex-container does not
+                // The dropdown row has class "flexnowrap" — the H4's inner flex-container does not
                 const dropdownRow = uiPresetBlock.querySelector('.flex-container.flexnowrap');
                 if (presetH4 && dropdownRow) {
                     const buttonContainer = presetH4.querySelector('.flex-container');

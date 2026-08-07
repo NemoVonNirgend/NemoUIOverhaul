@@ -68,7 +68,7 @@ let panelEl = null;
 /** @type {string|null} Current preset id being edited */
 let currentPresetId = null;
 
-// â”€â”€â”€ Helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Helpers ────────────────────────────────────────────────────
 
 /**
  * Format a source::model value for display.
@@ -397,7 +397,7 @@ function buildDrafterRow(index, drafter) {
     return row;
 }
 
-// â”€â”€â”€ Panel Rendering â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Panel Rendering ────────────────────────────────────────────
 
 /**
  * Build the full panel DOM for the given preset.
@@ -415,7 +415,7 @@ function buildPanelDom(preset) {
     const drafterRulesPreview = PipelinePrompts.getDrafterRules('{{user}}');
     const antiSlopPreview = PipelinePrompts.getAntiSlopRules();
 
-    // â”€â”€ Header â”€â”€
+    // ── Header ──
     const header = document.createElement('div');
     header.className = 'nemo-stack-header';
     const presetSelect = document.createElement('select');
@@ -436,7 +436,7 @@ function buildPanelDom(preset) {
     `);
     frag.appendChild(header);
 
-    // â”€â”€ Stage 1: Recall + Analysis â”€â”€
+    // ── Stage 1: Recall + Analysis ──
     const section1 = document.createElement('div');
     section1.className = 'nemo-stack-section';
     section1.dataset.section = 'recall';
@@ -466,7 +466,7 @@ function buildPanelDom(preset) {
     section1.appendChild(content1);
     frag.appendChild(section1);
 
-    // â”€â”€ Stage 2: Drafters â”€â”€
+    // ── Stage 2: Drafters ──
     const section2 = document.createElement('div');
     section2.className = 'nemo-stack-section';
     section2.dataset.section = 'drafters';
@@ -497,7 +497,7 @@ function buildPanelDom(preset) {
     section2.appendChild(content2);
     frag.appendChild(section2);
 
-    // â”€â”€ Stage 3: Consolidation â”€â”€
+    // ── Stage 3: Consolidation ──
     const section3 = document.createElement('div');
     section3.className = 'nemo-stack-section';
     section3.dataset.section = 'consolidation';
@@ -518,7 +518,7 @@ function buildPanelDom(preset) {
     section3.appendChild(content3);
     frag.appendChild(section3);
 
-    // â”€â”€ Footer â”€â”€
+    // ── Footer ──
     const footerHtml = `
         <div class="nemo-stack-footer">
             <button class="nemo-stack-footer-btn primary" id="nemo-stack-save-btn">Save</button>
@@ -537,7 +537,7 @@ function buildPanelDom(preset) {
     return frag;
 }
 
-// â”€â”€â”€ Event Binding â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Event Binding ──────────────────────────────────────────────
 
 /**
  * Bind all interactive events inside the panel.
@@ -613,7 +613,7 @@ function bindPanelEvents() {
     });
 }
 
-// â”€â”€â”€ Preset Actions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Preset Actions ─────────────────────────────────────────────
 
 /**
  * Load a preset into the panel.
@@ -682,7 +682,7 @@ function deleteCurrentPreset() {
     }
 }
 
-// â”€â”€â”€ Drafter Management â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Drafter Management ─────────────────────────────────────────
 
 /**
  * Read current drafter state from the DOM.
@@ -764,7 +764,7 @@ function rebuildDraftersList(drafters) {
     }
 }
 
-// â”€â”€â”€ Save / Validate / Test â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Save / Validate / Test ─────────────────────────────────────
 
 /**
  * Read all form values and save the preset.
@@ -897,7 +897,7 @@ async function testPipeline() {
     }
 }
 
-// â”€â”€â”€ Public API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── Public API ─────────────────────────────────────────────────
 
 export const PipelineSettingsUI = {
     /**
@@ -966,7 +966,7 @@ export const PipelineSettingsUI = {
             const grid = panelEl.closest('#nemo-model-selector-wrapper')?.querySelector('.nemo-model-grid');
             if (grid) /** @type {HTMLElement} */ (grid).style.display = '';
         } else {
-            // Open â€” load the active preset (or first available)
+            // Open — load the active preset (or first available)
             const activeId = PipelinePresets.getActiveId() || 'nemo-stack';
             loadPreset(activeId);
             panelEl.classList.add('open');

@@ -58,7 +58,7 @@ function extractResponseText(data) {
     if (typeof data === 'string') {
         return data;
     }
-    // Fallback â€” serialize so callers always get a string
+    // Fallback — serialize so callers always get a string
     return JSON.stringify(data);
 }
 
@@ -84,7 +84,7 @@ function extractResponseText(data) {
  */
 
 /**
- * API Router â€” dispatches requests to registered connections via direct fetch.
+ * API Router — dispatches requests to registered connections via direct fetch.
  * Never mutates global oai_settings; all routing is done through request body params.
  */
 export const ApiRouter = {
@@ -232,7 +232,7 @@ export const ApiRouter = {
             connections = connections.filter(c => !filter.excludeIds.includes(c.id));
         }
 
-        // Sort by priority (ascending â€” 0 is highest)
+        // Sort by priority (ascending — 0 is highest)
         connections.sort((a, b) => a.priority - b.priority);
 
         if (connections.length === 0) {

@@ -199,7 +199,7 @@ function getDisplayName(text, value) {
 }
 
 /**
- * Format a number as a shortened string (e.g., 128000 â†’ "128K").
+ * Format a number as a shortened string (e.g., 128000 → "128K").
  * @param {number} n
  * @returns {string}
  */
@@ -288,7 +288,7 @@ function createCard(model, source, currentValue, showProvider = false) {
         statsRow.appendChild(stat);
     }
 
-    // Pricing (varies by provider â€” OpenRouter is per-token, others are per-1M tokens)
+    // Pricing (varies by provider — OpenRouter is per-token, others are per-1M tokens)
     const pricing = meta?.pricing;
     if (pricing) {
         const rawInput = pricing.prompt ?? pricing.input;
@@ -377,7 +377,7 @@ function createCard(model, source, currentValue, showProvider = false) {
         if (pricing) {
             const inp = Number(pricing.prompt ?? pricing.input ?? 0);
             const out = Number(pricing.completion ?? pricing.output ?? 0);
-            // Normalize: if values are tiny (< 0.01), they're per-token â€” convert to per-1M
+            // Normalize: if values are tiny (< 0.01), they're per-token — convert to per-1M
             const scale = (inp > 0 && inp < 0.01) || (out > 0 && out < 0.01) ? 1000000 : 1;
             if (inp !== undefined) addInfoRow('Input Price', `$${(inp * scale).toFixed(2)} / 1M tokens`);
             if (out !== undefined) addInfoRow('Output Price', `$${(out * scale).toFixed(2)} / 1M tokens`);
@@ -396,7 +396,7 @@ function createCard(model, source, currentValue, showProvider = false) {
 }
 
 /**
- * Select a model â€” set the hidden select value and trigger change.
+ * Select a model — set the hidden select value and trigger change.
  * @param {string} source - Provider source key
  * @param {string} modelValue - Model value
  */
@@ -594,7 +594,7 @@ function renderCrossProvider(query) {
  */
 function onSearch(query) {
     if (!query || query.trim().length === 0) {
-        // No search â€” show current provider models
+        // No search — show current provider models
         renderForSource(currentSource);
         return;
     }
@@ -678,9 +678,9 @@ function buildPanel() {
         <div class="nemo-sort-group">
             <select class="nemo-sort-select">
                 <option value="name">Sort: Name</option>
-                <option value="price-asc">Sort: Price â†‘</option>
-                <option value="price-desc">Sort: Price â†“</option>
-                <option value="context">Sort: Context â†“</option>
+                <option value="price-asc">Sort: Price ↑</option>
+                <option value="price-desc">Sort: Price ↓</option>
+                <option value="context">Sort: Context ↓</option>
             </select>
         </div>
     `;
