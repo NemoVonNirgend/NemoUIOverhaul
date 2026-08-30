@@ -98,7 +98,7 @@ function updateSettingsNotice(root, state) {
     notice.hidden = false;
     notice.dataset.state = state.astraActive ? 'suspended' : 'available';
     notice.textContent = state.astraActive
-        ? 'AstraProjecta mobile mode is active. Nemo structural UI features are paused without changing their saved settings and return automatically when Astra releases the native interface.'
+        ? 'AstraProjecta mobile mode is active. Nemo structural UI features are temporarily paused without changing their saved settings and return automatically when Astra releases the native interface.'
         : 'AstraProjecta is installed but is not currently using its mobile shell. Nemo UI Overhaul remains active.';
 }
 
