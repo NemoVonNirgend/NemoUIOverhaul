@@ -2,7 +2,7 @@
 
 Standalone SillyTavern UI package for connection, settings, extensions, lorebook overhauls, animated backgrounds, enhanced model selection, wide panels, mobile enhancements, quick lore access, and optional interface themes.
 
-**Version:** 1.2.2
+**Version:** 1.2.3
 
 Install through Nemo Hub or SillyTavern's third-party extension installer with:
 
@@ -12,19 +12,23 @@ The native Extensions settings drawer gates each feature group. Feature switches
 
 ## Optional UI compatibility
 
-NemoUIOverhaul remains a complete standalone extension. Chat Completion Tabs and Moonlit Echoes are not dependencies, and neither extension is imported or called through a private API.
+NemoUIOverhaul remains a complete standalone extension. Chat Completion Tabs, Moonlit Echoes, and AstraProjecta are not dependencies, and none of their modules are imported or called through private APIs.
 
 At runtime, NemoUIOverhaul detects the interface capabilities that are actually present:
 
 | Active extensions | Result |
 | --- | --- |
-| Neither Rivelle extension | Nemo owns its standalone Chat Completion drawers, model selector, and prompt-manager placement. |
+| No Rivelle UI extension | Nemo owns its standalone Chat Completion drawers, model selector, settings tabs, lorebook workspace, extension browser, backgrounds, responsive layout, and optional theme. |
 | Chat Completion Tabs | Rivelle owns the Parameters and Prompts tab layout. Nemo releases the affected native nodes and keeps its other UI enhancements active. |
 | Moonlit Echoes | Nemo keeps its standalone layout and applies narrowly scoped height, wrapping, and overflow guards to prevent clipped preset text. |
-| Both | Rivelle owns the tab structure, Moonlit owns the visual theme, and Nemo adds its independent controls without requiring either project. |
-| Chat Completion Tabs is disabled or removed | Nemo restores its standalone Chat Completion layout automatically. |
+| Chat Completion Tabs and Moonlit Echoes | Rivelle owns the tab structure, Moonlit owns the visual theme, and Nemo adds its independent controls without requiring either project. |
+| AstraProjecta installed in desktop or inactive mode | Nemo remains fully active because Astra is not currently porting the native SillyTavern drawers. |
+| AstraProjecta mobile mode | Astra owns the structural interface. Nemo temporarily suspends its connection, settings-tab, lorebook, extension-browser, background, model-selector, responsive, and theme layers while preserving every saved Nemo setting. |
+| AstraProjecta releases mobile mode | Nemo restores its standalone structural UI automatically after Astra returns the native drawers. |
 
 Chat Completion Tabs initializes after a short delay. Nemo detects the enabled extension before its tabs appear and temporarily yields those nodes, preventing both extensions from repeatedly moving the same controls.
+
+AstraProjecta is a broader mobile shell rather than a single panel. It ports native drawers such as AI Response Configuration, Advanced Formatting, User Settings, Lorebooks, Backgrounds, and Extensions into its own hosts. Nemo therefore uses an explicit structural-owner handoff instead of allowing two observers to repeatedly reclaim the same elements. The settings drawer stays available inside Astra so users can review or change saved Nemo options, but structural changes are deferred until Nemo owns the interface again.
 
 For diagnostics, open the browser console and run:
 
@@ -32,7 +36,7 @@ For diagnostics, open the browser console and run:
 window.NemoUIOverhaul?.getCompatibilityState?.()
 ```
 
-The returned object reports whether Chat Completion Tabs is present, enabled, pending, or active, which extension currently owns the Chat Completion layout, and whether Moonlit Echoes was detected.
+The returned object reports Chat Completion Tabs and Moonlit state plus `astraPresent`, `astraActive`, `portedDrawerCount`, `structuralUiOwner`, and the current Nemo feature lifecycle state.
 
 ## Reasoning controls
 
@@ -61,7 +65,7 @@ NemoUIOverhaul intentionally does **not** style or initialize prompt-workstation
 
 This separation ensures installing NemoUIOverhaul cannot override the prompt appearance selected in NemoPresetExt.
 
-NemoUIOverhaul continues to own broader SillyTavern presentation:
+NemoUIOverhaul continues to own broader SillyTavern presentation whenever no external structural shell has claimed it:
 
 - Connection and model-selection interfaces
 - Settings, extensions, and advanced-formatting tabs

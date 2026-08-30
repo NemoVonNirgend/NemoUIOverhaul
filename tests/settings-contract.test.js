@@ -7,6 +7,7 @@ const source = [
     '../ui/overhaul-settings.js',
     '../ui/overhaul-settings-panel.js',
     '../ui/overhaul-runtime.js',
+    '../ui/overhaul-feature-runtime.js',
 ].map(file => readFileSync(new URL(file, import.meta.url), 'utf8')).join('\n');
 
 test('owns persistent settings and gates UI feature groups', () => {
@@ -30,9 +31,11 @@ test('owns persistent settings and gates UI feature groups', () => {
     assert.match(source, /nemo-ui-overhaul-settings/);
 });
 
-test('publishes optional compatibility diagnostics without declaring dependencies', () => {
+test('publishes combined optional compatibility diagnostics without declaring dependencies', () => {
     assert.match(source, /initializeOptionalUiCompatibility/);
-    assert.match(source, /getCompatibilityState:\s*getOptionalUiCompatibilityState/);
+    assert.match(source, /initializeAstraProjectaCompatibility/);
+    assert.match(source, /getCompatibilityState:\s*combinedCompatibilityState/);
     assert.match(source, /refreshCompatibility/);
     assert.match(source, /cleanupCompatibility/);
+    assert.match(source, /syncUiOverhaulFeatures/);
 });

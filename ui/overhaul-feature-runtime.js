@@ -29,7 +29,6 @@ function setFeatureClasses(settings, active) {
     body.classList.toggle('nemo-extensions-overhaul-enabled', active && Boolean(settings?.extensionTab));
     body.classList.toggle('nemo-animated-backgrounds-enabled', active && Boolean(settings?.animatedBackgrounds));
     body.classList.toggle('nemo-lorebook-overhaul-enabled', active && Boolean(settings?.lorebookUi));
-    body.dataset.nemoUiStructuralState = active ? 'active' : 'suspended';
 }
 
 function clearModelTimer() {
@@ -62,15 +61,16 @@ async function suspendStructuralFeatures() {
     applyResponsiveOptions(settings, { enabled: false });
     await applyTheme('none');
     setFeatureClasses(settings, false);
+    document.body.dataset.nemoUiStructuralState = 'suspended';
 }
 
 async function mountStructuralFeatures() {
     if (runtime.mounted || runtime.desiredSuspended) return;
     const settings = runtime.settings ?? {};
     const generation = ++runtime.generation;
-    document.body.dataset.nemoUiStructuralState = 'mounting';
 
     setFeatureClasses(settings, true);
+    document.body.dataset.nemoUiStructuralState = 'mounting';
     applyResponsiveOptions(settings, { enabled: true });
     await initializeThemes();
     if (runtime.desiredSuspended || generation !== runtime.generation) return;
@@ -135,5 +135,5 @@ export async function cleanupUiOverhaulFeatures() {
     runtime.desiredSuspended = true;
     runtime.generation++;
     await syncUiOverhaulFeatures({ suspended: true });
-    delete document.body?.dataset?.nemoUiStructuralState;
+    if (document.body?.dataset) delete document.body.dataset.nemoUiStructuralState;
 }
