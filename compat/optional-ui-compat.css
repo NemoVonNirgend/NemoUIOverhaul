@@ -1,0 +1,136 @@
+/* Optional, dependency-free interoperability for third-party UI extensions. */
+
+body.nemo-ui-hide-lorebook-presets .nemo-world-info-preset-section {
+    display: none !important;
+}
+
+/*
+ * Moonlit Echoes deliberately uses compact global heading rules. Restore
+ * intrinsic height and wrapping only around the Chat Completion preset strip
+ * and Nemo-owned controls so labels cannot be shaved by a fixed-height row.
+ */
+body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child,
+body[data-nemo-ui-moonlit='true'] #nemo-model-selector-wrapper,
+body[data-nemo-ui-moonlit='true'] .nemo-converted-drawer,
+body[data-nemo-ui-moonlit='true'] .nemo-world-info-preset-section {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+}
+
+body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .title_restorable,
+body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .standoutHeader {
+    height: auto !important;
+    min-height: 33px;
+    overflow: visible !important;
+    flex-wrap: wrap;
+    align-content: center;
+    row-gap: 4px;
+    padding-top: 4px !important;
+}
+
+body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .title_restorable > strong,
+body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .standoutHeader > strong,
+body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .title_restorable span,
+body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .standoutHeader span {
+    min-width: 0;
+    height: auto !important;
+    line-height: 1.35;
+    white-space: normal;
+    overflow: visible;
+}
+
+body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .flex-container,
+body[data-nemo-ui-moonlit='true'] #nemo-model-selector-wrapper > .nemo-provider-tabs,
+body[data-nemo-ui-moonlit='true'] .nemo-world-info-preset-controls {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+body[data-nemo-ui-moonlit='true'] #settings_preset_openai,
+body[data-nemo-ui-moonlit='true'] #nemo-world-info-preset-select {
+    min-width: 0;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-overflow: ellipsis;
+}
+
+/* Rivelle owns these containers when her tab extension is active. */
+body[data-nemo-ui-chat-completion-owner='rivelle'] .openai-tab-buttons,
+body[data-nemo-ui-chat-completion-owner='rivelle'] .openai-tab-content {
+    min-width: 0;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+body[data-nemo-ui-chat-completion-owner='rivelle'] .openai-tab-content {
+    overflow: visible;
+}
+
+/* The proxy selector has no native visible label, so clarify its role. */
+.nemo-ui-reasoning-selector-label {
+    flex: 0 0 100%;
+    min-width: 0;
+    margin: 0 0 4px;
+    text-align: left;
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+@media (max-width: 1000px) {
+    body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .title_restorable,
+    body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .standoutHeader,
+    body[data-nemo-ui-moonlit='true'] #openai_api-presets > div:first-child > .flex-container,
+    body[data-nemo-ui-moonlit='true'] .nemo-world-info-preset-controls {
+        flex-wrap: wrap;
+    }
+
+    body[data-nemo-ui-moonlit='true'] #settings_preset_openai,
+    body[data-nemo-ui-moonlit='true'] #nemo-world-info-preset-select {
+        flex: 1 1 180px;
+        width: 100%;
+    }
+}
+
+.nemo-ui-reasoning-selector-row {
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.nemo-ui-reasoning-selector-row > select {
+    min-width: 0;
+}
+
+body[data-nemo-ui-chat-completion-owner='rivelle'] .openai-tab-buttons {
+    height: auto;
+    min-height: fit-content;
+    overflow: visible;
+}
+
+body[data-nemo-ui-moonlit='true'] .nemo-converted-drawer > .inline-drawer-header,
+body[data-nemo-ui-moonlit='true'] #nemo-ui-overhaul-settings .inline-drawer-header {
+    height: auto !important;
+    min-height: 36px;
+    overflow: visible !important;
+    flex-wrap: wrap;
+}
+
+body[data-nemo-ui-moonlit='true'] .nemo-converted-drawer > .inline-drawer-header b,
+body[data-nemo-ui-moonlit='true'] #nemo-ui-overhaul-settings .inline-drawer-header b,
+body[data-nemo-ui-moonlit='true'] #nemo-model-selector-wrapper h3,
+body[data-nemo-ui-moonlit='true'] .nemo-world-info-container h3 {
+    min-width: 0;
+    height: auto !important;
+    line-height: 1.35;
+    white-space: normal;
+    overflow: visible;
+}
+
+body[data-nemo-ui-moonlit='true'] #nemo-model-selector-wrapper .nemo-provider-tab {
+    min-width: 0;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}

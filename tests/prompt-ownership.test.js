@@ -4,7 +4,12 @@ import test from 'node:test';
 
 const manifest = JSON.parse(readFileSync(new URL('../manifest.json', import.meta.url), 'utf8'));
 const readme = readFileSync(new URL('../README.md', import.meta.url), 'utf8');
-const index = readFileSync(new URL('../index.js', import.meta.url), 'utf8');
+const index = [
+    '../index.js',
+    '../ui/overhaul-settings.js',
+    '../ui/overhaul-settings-panel.js',
+    '../ui/overhaul-runtime.js',
+].map(file => readFileSync(new URL(file, import.meta.url), 'utf8')).join('\n');
 const styles = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
 
 const PROMPT_SELECTOR_MARKERS = [
@@ -27,7 +32,7 @@ function escapeRegex(value) {
 }
 
 test('manifest and documentation define the post-prompt ownership release', () => {
-    assert.equal(manifest.version, '1.2.1');
+    assert.equal(manifest.version, '1.2.2');
     assert.ok(readme.includes('does **not** style or initialize prompt-workstation surfaces'));
     assert.ok(readme.includes('NemoPresetExt 6.0 owns'));
 });
