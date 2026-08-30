@@ -15,6 +15,10 @@ const SETTINGS_LABELS = Object.freeze({
     mobileEnhancements: 'Mobile UI enhancements',
 });
 
+function structuralUiEnabled() {
+    return document.body?.dataset?.nemoUiStructuralOwner !== 'astra';
+}
+
 function mountSettings(settings) {
     if (document.getElementById('nemo-ui-overhaul-settings')) return true;
     const container = document.getElementById('extensions_settings') ?? document.getElementById('extensions_settings2');
@@ -28,6 +32,7 @@ function mountSettings(settings) {
             <div class="inline-drawer-toggle inline-drawer-header"><b>Nemo UI Overhaul</b><div class="inline-drawer-icon fa-solid fa-circle-chevron-down down"></div></div>
             <div class="inline-drawer-content">
                 <p class="notes">Most feature switches apply after reload. Theme, responsive options, and lorebook preset visibility apply immediately.</p>
+                <div id="nemo-ui-external-compat-status" class="notes" role="status" aria-live="polite" hidden></div>
                 ${Object.entries(SETTINGS_LABELS).map(([key, label]) => `<label class="checkbox_label"><input type="checkbox" data-setting="${key}" ${settings[key] ? 'checked' : ''}><span>${label}</span></label>`).join('')}
                 <small class="notes">Hiding lorebook preset controls removes only the preset selector and its management buttons. Saved presets and active lorebooks are unchanged.</small>
                 <label for="nemo-ui-theme">Interface theme</label>
@@ -44,7 +49,7 @@ function mountSettings(settings) {
         void saveSettings();
         if (input.dataset.setting === 'uiTheme') setTheme(input.value);
         if (input.dataset.setting === 'widePanels' || input.dataset.setting === 'mobileEnhancements') {
-            applyResponsiveOptions(settings);
+            applyResponsiveOptions(settings, { enabled: structuralUiEnabled() });
         }
         if (input.dataset.setting === 'lorebookPresetControls') {
             refreshOptionalUiCompatibility(settings);

@@ -1,0 +1,41 @@
+/* AstraProjecta owns the native SillyTavern shell while its mobile layout is active. */
+
+#nemo-ui-external-compat-status {
+    display: block;
+    margin: 4px 0 10px;
+    padding: 8px 10px;
+    border: 1px solid color-mix(in srgb, var(--SmartThemeQuoteColor) 40%, transparent);
+    border-radius: 6px;
+    background: color-mix(in srgb, var(--SmartThemeQuoteColor) 10%, transparent);
+    line-height: 1.35;
+}
+
+#nemo-ui-external-compat-status[hidden] {
+    display: none !important;
+}
+
+#nemo-ui-external-compat-status[data-state='suspended'] {
+    border-color: color-mix(in srgb, #ffd166 55%, transparent);
+    background: color-mix(in srgb, #ffd166 10%, transparent);
+}
+
+body[data-nemo-ui-astra='active'] :is(
+    #nemo-model-selector-wrapper,
+    #nemo-tc-selector-wrapper,
+    #nemo-selector-reenable-wrap,
+    #nemo-selector-reenable-btn,
+    .nemo-user-settings-tabs,
+    .nemo-user-settings-search,
+    #nemo-search-results,
+    .nemo-extensions-layout,
+    #nemo-tab-extension-overlay,
+    #enhanced-video-controls,
+    #show-video-controls,
+    .nemo-theme-change-notice
+) {
+    display: none !important;
+}
+
+body[data-nemo-ui-astra='active'] {
+    --nemo-external-tab-height: 0px;
+}

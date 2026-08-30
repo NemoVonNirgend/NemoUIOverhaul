@@ -38,8 +38,11 @@ export function getSettings() {
     return settings;
 }
 
-export function applyResponsiveOptions(settings) {
+export function applyResponsiveOptions(settings, { enabled = true } = {}) {
     document.getElementById('nemo-wide-panels-styles')?.remove();
+    document.body.classList.remove('nemo-mobile-enhanced');
+    if (!enabled) return;
+
     if (settings.widePanels) {
         const style = document.createElement('style');
         style.id = 'nemo-wide-panels-styles';
